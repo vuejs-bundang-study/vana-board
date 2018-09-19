@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "```\r npm install\r ```",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production nodemon ./src/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "js-yaml": "^3.12.0",
+    "nodemon": "^1.18.4"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
