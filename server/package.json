@@ -4,18 +4,48 @@
   "description": "```\r npm install\r ```",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production nodemon ./src/app.js",
-    "dev": "cross-env NODE_ENV=development nodemon ./src/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js --watch src",
+    "build": "cross-env NODE_ENV=production babel src --out-dir build",
+    "start": "cross-env NODE_ENV=production nodemon ./build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "cross-env": "^5.2.0",
+    "express": "^4.16.3",
     "js-yaml": "^3.12.0",
-    "nodemon": "^1.18.4"
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.4",
+    "winston": "^2.4.1",
+    "winston-daily-rotate-file": "^1.7.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "jest": "^23.6.0"
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "plugins": [
+          "transform-async-to-generator"
+        ],
+        "presets": [
+          "env"
+        ]
+      },
+      "production": {
+        "plugins": [
+          "transform-async-to-generator"
+        ],
+        "presets": [
+          "env"
+        ]
+      }
+    }
   }
 }
