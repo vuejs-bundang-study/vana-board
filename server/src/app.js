@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import path from 'path';
 import fs from 'fs';
+import mongoose from 'mongoose';
 import routes from './routes';
 import { config } from './constants/config';
 import { logRoot, publicRoot } from './constants/path';
@@ -46,3 +47,7 @@ app.use(function (err, req, res, next) {
     }
     res.status(500).send('서비스에 문제가 발생했습니다. 잠시 후에 다시 시도해주세요.');
 });
+
+mongoose.connect(config.mongodb.url, { useNewUrlParser: true })
+    .then(() => { console.log(`MongoDB connected -> ${config.mongodb.url}`); })
+    .catch(console.error);

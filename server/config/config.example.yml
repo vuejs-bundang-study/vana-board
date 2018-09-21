@@ -1,6 +1,9 @@
 server:
   port: 8080
 
+mongodb:
+  url: mongodb://username:password@localhost:27017/my-database
+
 redis:
   host: 127.0.0.1
   port: 6379
