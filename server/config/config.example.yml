@@ -1,5 +1,12 @@
 server:
   port: 8080
+  cors_whitelist:
+  -
+  -
+  -
+
+mongodb:
+  url: mongodb://username:password@localhost:27017/my-database
 
 redis:
   host: 127.0.0.1
