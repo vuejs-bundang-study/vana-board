@@ -1,0 +1,3 @@
+<template>
+  <h2>게시판 입니다.</h2>
+</template>
