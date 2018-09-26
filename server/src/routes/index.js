@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import { sampleRouter } from './sample';
+import { postRouter } from './post';
+import { categoryRouter } from './category';
 import { config } from '../constants/config';
 
 const router = express.Router();
@@ -24,5 +26,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/sample', sampleRouter);
+router.use('/post', postRouter);
+router.use('/category', categoryRouter);
 
 export default router;
