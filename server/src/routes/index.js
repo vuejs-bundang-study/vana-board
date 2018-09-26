@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { sampleRouter } from './sample';
+import { userRouter } from './user';
 import { config } from '../constants/config';
 
 const router = express.Router();
@@ -24,5 +25,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/sample', sampleRouter);
+router.use('/user', userRouter);
 
 export default router;
