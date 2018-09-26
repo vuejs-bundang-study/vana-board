@@ -1,4 +1,3 @@
-import axios from 'axios'
 const resourceHost = 'http://localhost:8080'
 
 // initial state
@@ -12,7 +11,7 @@ const getters = {}
 // actions
 const actions = {
   LOGIN ({ commit }, { email, password }) {
-    return axios
+    return this.$http
       .post(`${resourceHost}/login`, { email, password })
       .then(({ data }) => commit('LOGIN', data))
   },
