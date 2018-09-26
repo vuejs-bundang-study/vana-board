@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { sampleRouter } from './sample';
+<<<<<<< HEAD
 
 <<<<<<<
 HEAD;
@@ -17,6 +18,9 @@ Model;
 정의, router, service;
 구조;
 잡음.
+=======
+import { userRouter } from './user';
+>>>>>>> origin/feature/5
 import { config } from '../constants/config';
 
 const router = express.Router();
