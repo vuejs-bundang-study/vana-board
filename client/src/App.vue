@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <dash-board-component></dash-board-component>
+    <home-component></home-component>
   </div>
 </template>
 
 <script>
-import DashBoardComponent from './components/DashBoardComponent.vue'
+import HomeComponent from './components/HomeComponent.vue'
 export default {
   name: 'App',
   components: {
-    DashBoardComponent
+    HomeComponent
   }
 }
 </script>
