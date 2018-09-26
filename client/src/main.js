@@ -5,7 +5,8 @@ import Vuetify from 'Vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import App from './App'
-import store from './vuex/store'
+import store from './store/index'
+import router from './router/index'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
@@ -14,6 +15,8 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   store,
+  router,
   components: { App },
-  template: '<App/>'
+  // template: '<App/>'
+  render: h => h(App)
 })
