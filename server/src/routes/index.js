@@ -1,8 +1,22 @@
 import express from 'express';
 import cors from 'cors';
 import { sampleRouter } from './sample';
+
+<<<<<<<
+HEAD;
 import { postRouter } from './post';
 import { categoryRouter } from './category';
+
+======
+=
+import { userRouter } from './user';
+
+>>>>>>>
+User;
+Model;
+정의, router, service;
+구조;
+잡음.
 import { config } from '../constants/config';
 
 const router = express.Router();
@@ -28,5 +42,6 @@ router.get('/', (req, res) => {
 router.use('/sample', sampleRouter);
 router.use('/post', postRouter);
 router.use('/category', categoryRouter);
+router.use('/user', userRouter);
 
 export default router;
