@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const categorySchema = new Schema({
-    urlName: String,
-    displayName: String,
+    name: String,
     createdBy: String,
     createdAt: { type: Date, default: Date.now },
     // largeCategory: String,
