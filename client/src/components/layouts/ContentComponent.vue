@@ -11,6 +11,7 @@
   </v-content>
 </template>
 <script>
+
 import BoardComponent from '../board/BoardComponent.vue'
 
 export default {

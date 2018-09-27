@@ -2,7 +2,8 @@ const resourceHost = 'http://localhost:8080'
 
 // initial state
 const state = {
-  accessToken: null
+  accessToken: null,
+  test: 'test stete'
 }
 
 // getters
@@ -27,6 +28,9 @@ const mutations = {
   },
   LOGOUT (state) {
     state.accessToken = null
+  },
+  TEST (state, str) {
+    console.log('str : ' + str)
   }
 }
 
