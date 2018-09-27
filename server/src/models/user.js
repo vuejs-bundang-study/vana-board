@@ -10,12 +10,12 @@ const userSchema = new Schema({
         uppercase: true,
         trim: true,
     },
-    username: {
+    email: {
         type: String,
         unique: true,
         required: true,
         minlength: 6,
-        maxlength: 20,
+        maxlength: 30,
     },
     password: {
         type: String,
@@ -25,8 +25,8 @@ const userSchema = new Schema({
         type: String,
         minlength: 2,
         maxlength: 12,
+        required: true,
     },
-    email: String,
     emailVerified: { type: Boolean, default: false },
     socialId: String,
     profileImage: String,

@@ -1,6 +1,22 @@
+import crypto from 'crypto';
 import { User } from '../models/user';
+import { config } from '../constants/config';
 
-export const createUser = (userInfo) => {
+const { secret } = config.server;
+
+export const createUser = ({ email, password, nickname, profileImage }) => {
+
+    const encryptedPassword = crypto.createHmac('sha256', secret).update(password).digest('base64');
+
+    return User.create({
+        email,
+        password: encryptedPassword,
+        nickname,
+        profileImage,
+    });
+};
+
+export const createSocialUser = ({}) => {
 
 };
 
