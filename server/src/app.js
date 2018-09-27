@@ -54,3 +54,5 @@ mongoose.connect(config.mongodb.url, { useNewUrlParser: true })
         console.log(`MongoDB connected -> ${config.mongodb.url}`);
     })
     .catch(console.error);
+
+// git flow test
