@@ -1,3 +1,17 @@
 <template>
-  <h2>게시판 입니다.</h2>
+  <ul>
+    <v-container>
+      <board-list-component></board-list-component>
+    </v-container>
+  </ul>
 </template>
+
+<script>
+import BoardListComponent from './BoardListComponent'
+
+export default{
+  components: {
+    BoardListComponent
+  }
+}
+</script>
