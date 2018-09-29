@@ -5,6 +5,7 @@ import { sampleRouter } from './sample';
 import { postRouter } from './post';
 import { categoryRouter } from './category';
 import { userRouter } from './user';
+import { authRouter } from './auth';
 
 const router = express.Router();
 
@@ -27,8 +28,9 @@ router.get('/', (req, res) => {
 });
 
 router.use('/sample', sampleRouter);
+router.use('/user', userRouter);
+router.use('/auth', authRouter);
 router.use('/post', postRouter);
 router.use('/category', categoryRouter);
-router.use('/user', userRouter);
 
 export default router;

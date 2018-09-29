@@ -9,18 +9,27 @@ userRouter.post('/', (req, res) => {
         .then((user) => {
             const { _id, email } = user;
             return res.json({
-                _id,
-                email,
+                success: true,
+                user: {
+                    _id,
+                    email,
+                },
             });
         })
         .catch((error) => {
             switch (error.code) {
                 case 11000: {
-                    return res.status(409).json('이미 가입된 이메일입니다.');
+                    return res.status(409).json({
+                        success: false,
+                        message: '이미 가입된 이메일입니다.',
+                    });
                 }
                 default:
                     console.log(error);
-                    return res.status(500).json('서비스에 문제가 발생했습니다.');
+                    return res.status(500).json({
+                        success: false,
+                        message: '서비스에 문제가 발생했습니다.',
+                    });
             }
         });
 });
