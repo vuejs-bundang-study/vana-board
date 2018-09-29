@@ -8,7 +8,7 @@
               <a class="news_title black--text" title="운영알림판 바로가기">운영알림판 ></a>
             </h2>
             <div id = "list" class="list_empty">
-              <span>운영알림판 내용이 없습니다.</span>
+              <span>운영알림판 내용이 없습니다.{{items}}</span>
             </div>
           </v-card>
         </v-flex>
@@ -112,8 +112,17 @@
 </template>
 
 <script>
-
+import { mapActions, mapState } from 'vuex'
 export default {
+  methods: mapActions('post', [
+    'getAllPosts'
+  ]),
+  mounted () {
+    this.getAllPosts()
+  },
+  computed: mapState({
+    items: state => state.post.posts
+  }),
   data () {
     return {
       recommended_items: [
@@ -300,16 +309,16 @@ export default {
 </script>
 
 <style>
-  #title{
-    padding:10px;
-    margin:5px;
-    display:block;
-    width:180px;
-  }
-  #list{
-    padding:10px;
-    margin:5px;
-    display:block;
-    border-top:1px solid gray;
-  }
+#title {
+  padding: 10px;
+  margin: 5px;
+  display: block;
+  width: 180px;
+}
+#list {
+  padding: 10px;
+  margin: 5px;
+  display: block;
+  border-top: 1px solid gray;
+}
 </style>
