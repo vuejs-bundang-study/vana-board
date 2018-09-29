@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <v-app>
-      <login-component></login-component>
-      <!--<home-component></home-component>-->
+      <!-- <login-component></login-component> -->
+      <home-component></home-component>
     </v-app>
   </div>
 </template>

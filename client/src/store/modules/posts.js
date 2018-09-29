@@ -2,7 +2,7 @@ import boardApi from '../../api/board'
 
 // initial state
 const state = {
-  all: []
+  posts: []
 }
 
 // getters
@@ -21,7 +21,7 @@ const actions = {
 // mutations
 const mutations = {
   setPosts (state, posts) {
-    state.all = posts
+    state.posts = posts
   }
 }
 
