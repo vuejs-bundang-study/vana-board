@@ -4,6 +4,7 @@ import Home from '@/components/HomeComponent'
 import Board from '@/components/board/BoardComponent'
 import Login from '@/components/login/LoginComponent'
 import MyPage from '@/components/mypage/MyPageComponent'
+import Content from '@/components/layouts/ContentComponent'
 
 Vue.use(Router)
 
@@ -19,7 +20,10 @@ export default new Router({
     {
       path: '/board',
       name: 'Board',
-      component: Board
+      components: {
+        default: Content,
+        content: Board
+      }
     },
     // login
     {
@@ -31,7 +35,10 @@ export default new Router({
     {
       path: '/mypage',
       name: 'MyPage',
-      component: MyPage
+      components: {
+        default: Content,
+        content: MyPage
+      }
     },
     {
       path: '*',

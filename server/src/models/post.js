@@ -11,7 +11,7 @@ const postSchema = new Schema({
     updatedAt: { type: Date, default: Date.now },
     viewCount: { type: Number, default: 0 },
     commentCount: { type: Number, default: 0 },
-    isDeleted: { type: Boolean, default: false }
+    isDeleted: { type: Boolean, default: false },
 });
 
 
