@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import fs from 'fs';
 import { config } from '../constants/config';
 import { sampleRouter } from './sample';
 import { postRouter } from './post';
@@ -26,6 +27,12 @@ router.use('*', cors(corsOptionsDelegate));
 router.get('/', (req, res) => {
     res.json('Hello!');
 });
+
+router.get('/apis', (req, res) => {
+  fs.readFile(__dirname + '/../api.html', 'utf8', function(err, data) {
+    res.end(data)
+  })
+})
 
 router.use('/sample', sampleRouter);
 router.use('/user', userRouter);

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title></title>
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-container>
+        <v-layout justify-center>
+          <v-flex md6>
+            <h2>서버주소 : http://49.247.204.250</h2>
+          </v-flex>
+        </v-layout>
+        <hr class="my-3" />
+        <v-layout justify-center>
+          <v-flex md6>
+            <v-expansion-panel>
+              <v-expansion-panel-content v-for="(api, i) in apis" :key="i">
+                <div slot="header">
+                  <h4>메서드 {{api.method}}<span class="mx-2"></span>URL : {{api.url}}</h4>
+                </div>
+                <v-card class="pa-5">
+                  <v-card-title primary-title>
+                    <div >
+                      <h3 class="headline mb-2">Request</h3>
+                      <v-container fluid>
+                        <v-data-table :headers="headers" :items="api.parameters" hide-actions class="elevation-1">
+                          <template slot="items" slot-scope="parameter">
+                            <td class="text-xs-right">{{ parameter.item }}</td>
+                          </template>
+                        </v-data-table>
+                      </v-container>
+                    </div>
+                  </v-card-title>
+                  <hr/>
+                  <v-card-title primary-title>
+                    <div>
+                      <h3 class="headline mb-0">Response</h3>
+                      <v-container fluid>
+                        <v-data-table :headers="headers" :items="api.parameters" hide-actions class="elevation-1">
+                          <template slot="items" slot-scope="parameter">
+                            <td class="text-xs-right">{{ parameter.item }}</td>
+                          </template>
+                        </v-data-table>
+                      </v-container>
+                    </div>
+                  </v-card-title>
+                </v-card>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-app>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+
+        headers: [
+          { text: '파라미터', value: 'parameter' },
+          { text: '타입', value: 'type' },
+          { text: '예시', value: 'exe' },
+          { text: '필수', value: 'required' },
+        ],
+        apis: [
+          {
+            url: '/category', method:'GET',
+            parameters: [
+              //{ parameter: '' , type: '', exe: '', required: '' }
+            ],
+            response: [
+              {
+
+              }
+            ]
+          },//
+        ],
+      }
+    })
+  </script>
+</body>
+
+</html>
