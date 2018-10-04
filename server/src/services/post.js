@@ -3,7 +3,7 @@ import { Post } from '../models/post';
 export const getPostByCategory = async (category, page, perPage) => {
     let skip = (page - 1) * perPage;
     let limit = perPage / 1;
-    return Post.find({ category: category }).sort({createdAt: -1}).skip(skip).limit(limit);
+    return Post.find({ category: category }).sort({ createdAt: -1 }).skip(skip).limit(limit);
 };
 
 export const createPost = async (post) => {
