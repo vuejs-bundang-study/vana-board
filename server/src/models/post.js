@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const postSchema = new Schema({
-    categoryId: String,
+    categoryId: Schema.Types.ObjectId,
     title: { type: String, default: '제목없음' },
     content: String,
     createdBy: { type: Schema.Types.ObjectId, ref: 'user' },
