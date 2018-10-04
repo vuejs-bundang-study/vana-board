@@ -4,11 +4,8 @@ const { Schema } = mongoose;
 
 const categorySchema = new Schema({
     name: String,
-    createdBy: String,
-    createdAt: { type: Date, default: Date.now },
-    // largeCategory: String,
-    // mediumCategory: String,
-    // smallCategory: String
+    createdBy: Schema.Types.ObjectId,
+    createdAt: { type: Date, default: Date.now }
 });
 
 

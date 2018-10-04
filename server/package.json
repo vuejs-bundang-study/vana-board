@@ -20,6 +20,7 @@
     "mongoose": "^5.2.16",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.4",
+    "npm": "^6.4.1",
     "redis": "^2.8.0",
     "winston": "^2.4.1",
     "winston-daily-rotate-file": "^1.7.2"
