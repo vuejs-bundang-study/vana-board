@@ -167,7 +167,7 @@ export default {
     this.getAllPosts()
   },
   computed: mapState({
-    recommendedItems: state => state.post.posts[0].recommendedItems,
+    recommendedItems: state => state.post.posts.recommendedItems,
     infoItems: state => state.post.posts[0].infoItems,
     reviewItems: state => state.post.posts[0].reviewItems,
     sellItems: state => state.post.posts[0].sellItems,
