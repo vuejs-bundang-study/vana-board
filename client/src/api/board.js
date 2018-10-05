@@ -187,25 +187,25 @@ const galleryItems = [
     // url: '../../assets/1e38666606e43.jpg',
     url: require('@/assets/1e38666606e43.jpg'),
     subject: '요즘 날씨 너무 좋네요!',
-    date:'10-05'
+    date: '10-05'
   },
   {
     // url: '../../assets/1de6675d4622b.jpg',
     url: require('@/assets/1de6675d4622b.jpg'),
     subject: '우리집 강쥐',
-    date:'10-06'
+    date: '10-06'
   },
   {
     // url: '../../assets/1d12bc9f5ccf9.jpg',
     url: require('@/assets/1d12bc9f5ccf9.jpg'),
     subject: '미패드4 플러스 질렀습니다.',
-    date:'10-07'
+    date: '10-07'
   },
   {
     // url: '../../assets/1da0d5a6d751a.jpg',
     url: require('@/assets/1da0d5a6d751a.jpg'),
     subject: '비오는 날 태화루',
-    date:'10-08'
+    date: '10-08'
   }
 ]
 
