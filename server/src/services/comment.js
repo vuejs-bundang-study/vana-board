@@ -13,6 +13,8 @@ export const createSample = async ({ title, content }) => {
      * }
      */
 
+     // Stash 테스트
+
     return Sample.create({
         title,
         content,
