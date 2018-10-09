@@ -9,12 +9,17 @@ import fs from 'fs';
 import mongoose from 'mongoose';
 import routes from './routes';
 import { config } from './constants/config';
-import { logRoot, publicRoot } from './constants/path';
+import { docRoot, logRoot, publicRoot } from './constants/path';
 import { logger } from './utils/logger';
-
+import { createDoc } from 'apidoc';
 /* =========================================
  Express Configuration
  ============================================*/
+createDoc({
+    src: './src/routes/',
+    dest: './doc/',
+});
+
 const app = express();
 const port = config.server.port || 8080;
 
@@ -35,6 +40,8 @@ app.listen(port, () => {
 
 // set public path
 fs.existsSync(publicRoot) || fs.mkdirSync(publicRoot);
+fs.existsSync(docRoot) || fs.mkdirSync(docRoot);
+app.use('/doc/', express.static(path.join(__dirname, './../doc')));
 app.use('/', express.static(path.join(__dirname, './../public')));
 
 // set api router
@@ -54,6 +61,4 @@ mongoose.connect(config.mongodb.url, { useNewUrlParser: true })
         console.log(`MongoDB connected -> ${config.mongodb.url}`);
     })
     .catch(console.error);
-
-// abcd
 
