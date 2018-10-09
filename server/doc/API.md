@@ -96,3 +96,55 @@ Response
     refreshToken: String, // 새로 발급된 refreshToken
 }
 ```
+
+### 카테고리 조회
+Request
+```
+GET /category
+```
+Response
+```
+{
+    "_id": "5bbcaa489fe91c2410c3f9f7",
+    "name": "카테고리 테스트",
+    "createdBy":{
+        "_id": "5bbca41dfb769a2324c35dfb",
+        "nickname": "BlueCitron"
+    },
+    "createdAt": "2018-10-09T13:16:56.677Z",
+    "updatedAt": "2018-10-09T13:16:56.678Z",
+    "__v": 0
+}
+```
+
+### 카테고리 등록
+Request
+```
+POST /category
+{
+    name: String(필수)(유니크),
+    createdBy: ObjectId(필수)
+}
+```
+Response
+```
+{
+    "success": Boolean,
+    "name": String,
+    "createdBy": ObjectId
+}
+```
+
+### 카테고리 삭제
+Request
+```
+DELETE /category/ObjectId
+ex) /category/5bbcaa489fe91c2410c3f9f7
+```
+Response
+```
+{
+    success: Boolean,
+    _id: ObjectId
+}
+
