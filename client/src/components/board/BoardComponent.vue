@@ -1,17 +1,7 @@
 <template>
   <ul>
     <v-container>
-      <board-list-component></board-list-component>
+      <router-view></router-view>
     </v-container>
   </ul>
 </template>
-
-<script>
-import BoardListComponent from './BoardListComponent'
-
-export default{
-  components: {
-    BoardListComponent
-  }
-}
-</script>

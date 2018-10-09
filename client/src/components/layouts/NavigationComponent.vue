@@ -8,14 +8,11 @@
   </v-navigation-drawer>
 </template>
 <script>
-import {mapGetters} from 'vuex'
 import MenuListComponent from './MenuListComponent.vue'
 export default {
   components: {
     MenuListComponent
   },
-  computed: mapGetters({
-    drawer: 'drawer'
-  })
+  props: ['drawer']
 }
 </script>

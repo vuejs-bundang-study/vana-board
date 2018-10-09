@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+// components
 import Home from '@/components/HomeComponent'
 import Board from '@/components/board/BoardComponent'
 import Login from '@/components/login/LoginComponent'
 import MyPage from '@/components/mypage/MyPageComponent'
-import Content from '@/components/layouts/ContentComponent'
+import DashBoard from '@/components/board/BoardListComponent'
+import BoardList from '@/components/board/BoardListTempComponent'
+import BoardInfo from '@/components/board/BoardInfoTempComponent'
 
 Vue.use(Router)
 
@@ -13,36 +17,44 @@ export default new Router({
     // main
     {
       path: '/',
-      name: 'Home',
-      component: Home
-    },
-    // board
-    {
-      path: '/board',
-      name: 'Board',
-      components: {
-        default: Content,
-        content: Board
-      }
+      component: Home,
+      redirect: '/board',
+      children: [
+        {
+          path: '/board',
+          component: Board,
+          children: [
+            {
+              path: '/',
+              component: DashBoard
+            },
+            {
+              path: 'list',
+              component: BoardList
+            },
+            {
+              path: 'info/:id',
+              component: BoardInfo
+            }
+          ]
+        },
+        {
+          path: '/mypage',
+          component: MyPage
+        }
+      ]
     },
     // login
     {
       path: '/login',
-      name: 'Login',
-      component: Login
-    },
-    // mypage
-    {
-      path: '/mypage',
-      name: 'MyPage',
-      components: {
-        default: Content,
-        content: MyPage
+      component: Login,
+      beforeEnter: function (to, from, next) {
+        // 인증 값 검증 로직 추가
       }
     },
     {
       path: '*',
-      redirect: '/'
+      redirect: '/board'
     }
   ]
 })

@@ -1,9 +1,8 @@
 <template>
   <v-app id="inspire">
-    <navigation-component></navigation-component>
-    <tool-bar-component></tool-bar-component>
+    <navigation-component :drawer="drawer"></navigation-component>
+    <tool-bar-component @changeDrawer="changeDrawer"></tool-bar-component>
     <content-component></content-component>
-    <div><h1>test{{userName}}</h1></div>
     <footer-component></footer-component>
   </v-app>
 </template>
@@ -25,11 +24,19 @@ export default {
   computed: mapState({
     userName: state => state.home.userName
   }),
-  methods: mapActions('home', [
-    'getUser'
-  ]),
-  created () {
+  methods: {
+    changeDrawer: function () {
+      this.drawer = !this.drawer
+    },
+    ...mapActions('home', ['getUser'])
+  },
+  mounted () {
     this.getUser()
+  },
+  data () {
+    return {
+      drawer: false
+    }
   }
 }
 </script>

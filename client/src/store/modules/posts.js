@@ -6,7 +6,11 @@ const state = {
 }
 
 // getters
-const getters = {}
+const getters = {
+  getPostAllData (state) {
+    return state.posts
+  }
+}
 
 // actions
 const actions = {
