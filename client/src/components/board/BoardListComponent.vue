@@ -168,11 +168,11 @@ export default {
   },
   computed: mapState({
     recommendedItems: state => state.post.posts.recommendedItems,
-    infoItems: state => state.post.posts[0].infoItems,
-    reviewItems: state => state.post.posts[0].reviewItems,
-    sellItems: state => state.post.posts[0].sellItems,
-    promoteItems: state => state.post.posts[0].promoteItems,
-    galleryItems: state => state.post.posts[0].galleryItems
+    infoItems: state => state.post.posts.infoItems,
+    reviewItems: state => state.post.posts.reviewItems,
+    sellItems: state => state.post.posts.sellItems,
+    promoteItems: state => state.post.posts.promoteItems,
+    galleryItems: state => state.post.posts.galleryItems
   }),
   data () {
     return {

@@ -209,14 +209,14 @@ const galleryItems = [
   }
 ]
 
-const Items = [{
+const Items = {
   'recommendedItems': recommendedItems,
   'infoItems': infoItems,
   'reviewItems': reviewItems,
   'sellItems': sellItems,
   'promoteItems': promoteItems,
   'galleryItems': galleryItems
-}]
+}
 export default {
   getPosts (cb) {
     setTimeout(() => cb(Items), 100)
