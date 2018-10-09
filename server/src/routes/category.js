@@ -6,9 +6,7 @@ export const categoryRouter = express.Router();
 categoryRouter.get('/', (req, res) => {
 
     const respond = (result) => {
-        if (!result) {
-            return res.status(404).json('찾을 수가 없어요.');
-        }
+        console.log(`카테고리 ${result.length} 건 조회`)
         return res.json(result);
     };
 
@@ -37,7 +35,10 @@ categoryRouter.post('/', (req, res) => {
       })
 
     const respond = (result) => {
+        console.log(`${result._id} 카테고리가 등록되었습니다.`)
+
         const { _id, name, createdBy, createdAt, updatedAt } = result;
+
         return res.json({
             success: true,
             _id, name, createdBy, createdAt, updatedAt,
@@ -58,11 +59,38 @@ categoryRouter.post('/', (req, res) => {
 
 });
 
-categoryRouter.delete('/:_id([0-9a-fA-F]{24})', (req, res) => {
+categoryRouter.put('/:_id([0-9a-fA-F]{24})', (req, res) => {
 
-    const { _id } = req.params;
+  const { _id } = req.params;
+  const { name } = req.body;
 
   const respond = (result) => {
+      console.log(`${_id} 카테고리가 수정되었습니다.`)
+      return res.json({
+          success: true,
+          _id,
+      });
+  };
+
+  const handleError = (error) => {
+      console.log(error);
+      return res.status(500).json({
+          success: false,
+          message: '서비스에 문제가 발생했습니다.',
+      });
+  };
+
+    deleteCategoryById(_id, { name })
+      .then(respond)
+      .catch(handleError);
+})
+
+categoryRouter.delete('/:_id([0-9a-fA-F]{24})', (req, res) => {
+
+  const { _id } = req.params;
+
+  const respond = (result) => {
+    console.log(`${_id} 카테고리가 삭제되었습니다.`)
       return res.json({
           success: true,
           _id,
