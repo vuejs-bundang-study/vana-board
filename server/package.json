@@ -8,6 +8,7 @@
     "build": "cross-env NODE_ENV=production babel src --out-dir build",
     "start": "cross-env NODE_ENV=production nodemon ./build/app.js",
     "forever": "cross-env NODE_ENV=production forever start forever.json",
+    "list": "forever list",
     "stop": "forever stop vana_backend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
