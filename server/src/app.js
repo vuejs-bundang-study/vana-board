@@ -8,6 +8,7 @@ import path from 'path';
 import fs from 'fs';
 import mongoose from 'mongoose';
 import routes from './routes';
+import 'babel-polyfill';
 import { config } from './constants/config';
 import { docRoot, logRoot, publicRoot } from './constants/path';
 import { logger } from './utils/logger';
@@ -61,4 +62,3 @@ mongoose.connect(config.mongodb.url, { useNewUrlParser: true })
         console.log(`MongoDB connected -> ${config.mongodb.url}`);
     })
     .catch(console.error);
-
