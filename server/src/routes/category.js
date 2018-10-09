@@ -25,39 +25,57 @@ categoryRouter.get('/', (req, res) => {
 
 categoryRouter.post('/', (req, res) => {
 
-    const { category } = req.body;
+    const { name, createdBy } = req.body;
+
+    if(!name || !createdBy)
+      return res.status(409).json({
+        success: false,
+        message: '필수 입력 필드를 모두 채워주세요.'
+      })
+
 
     const respond = (result) => {
-        console.log(result);
-        return res.json('ok!');
+        const { _id, name, createdBy, createdAt, updatedAt } = result
+        return res.json({
+          success: true,
+          _id, name, createdBy, createdAt, updatedAt
+        });
     };
 
     const handleError = (error) => {
         console.log(error);
-        return res.status(500).json('failure!');
+        return res.status(500).json({
+          success: false,
+          message: '서비스에 문제가 발생했습니다.',
+        });
     };
 
-    createCategory(category)
+    createCategory({ name, createdBy })
         .then(respond)
         .catch(handleError);
 
 });
 
-categoryRouter.delete('/:id([0-9a-fA-F]{24})', (req, res) => {
+categoryRouter.delete('/:_id([0-9a-fA-F]{24})', (req, res) => {
 
-  const { id } = req.params;
+  const { _id } = req.params;
 
   const respond = (result) => {
-      console.log(result);
-      return res.json('ok!');
+      return res.json({
+        success: true,
+        _id
+      });
   };
 
   const handleError = (error) => {
       console.log(error);
-      return res.status(500).json('failure!');
+      return res.status(500).json({
+        success: false,
+        message: '서비스에 문제가 발생했습니다.',
+      });
   };
 
-  deleteCategoryById(id)
+  deleteCategoryById(_id)
       .then(respond)
       .catch(handleError);
 })
