@@ -47,7 +47,7 @@ export default new Router({
     // login
     {
       path: '/login',
-      component: Login
+      component: Login,
       // ,
       // beforeEnter: function (to, from, next) {
       //   // 인증 값 검증 로직 추가

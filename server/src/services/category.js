@@ -6,7 +6,7 @@ export const getCategories = async () => {
 };
 
 export const createCategory = async ({ name, createdBy }) => {
-    console.log('name : ', name, ' createdBy : ', createdBy)
+    console.log('name : ', name, ' createdBy : ', createdBy);
     return Category.create({ name, createdBy });
 };
 
