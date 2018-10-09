@@ -14,7 +14,10 @@ categoryRouter.get('/', (req, res) => {
 
     const handleError = (error) => {
         console.log(error);
-        return res.status(500).json('failure!');
+        return res.status(500).json({
+          success: false,
+          message: '서비스에 문제가 발생했습니다.',
+        });
     };
 
     getCategories()
@@ -30,7 +33,7 @@ categoryRouter.post('/', (req, res) => {
     if(!name || !createdBy)
       return res.status(409).json({
         success: false,
-        message: '필수 입력 필드를 모두 채워주세요.'
+        message: '필수 입력 항목을 모두 입력해주세요.'
       })
 
 

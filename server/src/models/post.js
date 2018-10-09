@@ -3,10 +3,10 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const postSchema = new Schema({
-    categoryId: { type: Schema.Types.ObjectId, ref: 'category' },
+    category: { type: Schema.Types.ObjectId, required: true, ref: 'category' },
     title: { type: String, default: '제목없음' },
-    content: String,
-    createdBy: { type: Schema.Types.ObjectId, ref: 'user' },
+    content: { type: String },
+    createdBy: { type: Schema.Types.ObjectId, required: true, ref: 'user' },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
     viewCount: { type: Number, default: 0 },
