@@ -1,6 +1,6 @@
 server:
   port: 8080
-  secret:
+  secret: 'VANA_BOARD'
   cors_whitelist:
   -
   -
@@ -12,3 +12,17 @@ mongodb:
 redis:
   host: 127.0.0.1
   port: 6379
+  #
+  # server:
+  #   port: 8080
+  #   cors_whitelist:
+  #   -
+  #   -
+  #   -
+  #
+  # mongodb:
+  #   url: mongodb://49.247.204.250:27017/vana-board
+  #
+  # redis:
+  #   host: 49.247.204.250
+  #   port: 6379
