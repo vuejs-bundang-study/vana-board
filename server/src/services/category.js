@@ -1,13 +1,15 @@
 import { Category } from '../models/category';
 
 export const getCategories = async () => {
-    return Category.find();
+    return Category.find().populate('createdBy', 'nickname');
+    //return Category.find();
 };
 
-export const createCategory = async (category) => {
-    return Category.create(category);
+export const createCategory = async ({ name, createdBy }) => {
+    console.log('name : ', name, ' createdBy : ', createdBy)
+    return Category.create({ name, createdBy });
 };
 
-export const deleteCategoryById = async (id) => {
-    return Category.deleteOne({ _id: id});
+export const deleteCategoryById = async (_id) => {
+    return Category.deleteOne({ _id });
 };
