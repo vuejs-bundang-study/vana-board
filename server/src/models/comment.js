@@ -8,8 +8,9 @@ const commentSchema = new Schema({
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
     isChild: { type: Boolean, default: false },
-    parent: { type: Schema.Types.ObjectId, ref: 'comment' },
-    post: { type: Schema.Types.ObjectId, required: true, ref: 'post' }
+    parent: { type: Schema.Types.ObjectId },
+    post: { type: Schema.Types.ObjectId, required: true },
+    isDeleted: { type: Boolean, default: false }
 });
 
 export const Comment = mongoose.model('comment', commentSchema);

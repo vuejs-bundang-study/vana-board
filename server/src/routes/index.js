@@ -7,6 +7,7 @@ import { postRouter } from './post';
 import { categoryRouter } from './category';
 import { userRouter } from './user';
 import { authRouter } from './auth';
+import { commentRouter } from './comment';
 
 const router = express.Router();
 
@@ -28,16 +29,11 @@ router.get('/', (req, res) => {
     res.json('Hello!');
 });
 
-router.get('/apis', (req, res) => {
-  fs.readFile(__dirname + '/../api.html', 'utf8', function(err, data) {
-    res.end(data)
-  })
-})
-
 router.use('/sample', sampleRouter);
 router.use('/user', userRouter);
 router.use('/auth', authRouter);
 router.use('/post', postRouter);
 router.use('/category', categoryRouter);
+router.use('/comment', commentRouter);
 
 export default router;
