@@ -5,8 +5,8 @@ export const getAllComments = async () => {
       .populate('user', 'nickname')
 };
 
-export const getCommentsOnPost = async (_id) => {
-    return Comment.find({ _id, isDeleted: false })
+export const getCommentsOnPost = async (post) => {
+    return Comment.find({ post, isDeleted: false })
       .populate('user', 'nickname')
 };
 
