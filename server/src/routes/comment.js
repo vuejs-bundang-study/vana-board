@@ -75,7 +75,7 @@ commentRouter.post('/', (req, res) => {
 
 commentRouter.put('/:_id([0-9a-fA-F]{24})', (req, res) => {
 
-    const { _id } = req.param;
+    const { _id } = req.params;
     const { content } = req.body;
 
     const respond = (result) => {
@@ -102,7 +102,7 @@ commentRouter.put('/:_id([0-9a-fA-F]{24})', (req, res) => {
 
 commentRouter.delete('/:_id([0-9a-fA-F]{24})', (req, res) => {
 
-    const { _id } = req.param;
+    const { _id } = req.params;
 
     const respond = (result) => {
         console.log(`${_id} 댓글이 삭제되었습니다.`)
