@@ -15,7 +15,7 @@
           <v-flex xs6>
             <v-card class="section_list recommended text-sm-left">
               <h2 id = "title" class="section_title">
-                <span class="recommended_title">오늘의 추천글</span>
+                <a class="news_title black--text" title="자유게시판 바로가기">자유게시판 ></a>
               </h2>
               <div id = "list">
                 <v-list
@@ -119,9 +119,9 @@
                     v-for= "item in galleryItems"
                     :key= "item.id"
                     :item= "item"
-                    :src= "item.url">
+                    :src= "item.img">
                     <a class= "black--text">
-                      <img style = 'height:30%; width:30%;' :src= "item.url">
+                      <img style = 'height:30%; width:30%;' :src= "item.img">
                     </a>
                     <a class= "black--text">
                       {{item.subject}}
@@ -137,9 +137,9 @@
                     v-for= "item in galleryItems"
                     :key= "item.id"
                     :item= "item"
-                    :src= "item.url">
+                    :src= "item.img">
                     <a class= "black--text">
-                      <img style = 'height:30%; width:30%;' :src= "item.url">
+                      <img style = 'height:30%; width:30%;' :src= "item.img">
                     </a>
                     <a class= "black--text">
                       {{item.subject}}
@@ -161,8 +161,9 @@
 import { mapActions, mapState } from 'vuex'
 export default {
   methods: {
-    goPostInfo: function (id) {
-      this.$router.push({path: `/board/info/${id.subject}`})
+    goPostInfo: function (item) {
+      // this.$router.push({path: `/board/info/${id.subject}`})
+      this.$router.push({path: `/board/info/${item.key}/${item.id}`})
     },
     ...mapActions('post', ['getAllPosts'])
   },
@@ -171,11 +172,11 @@ export default {
   },
   computed: mapState({
     recommendedItems: state => state.post.posts.recommendedItems,
-    infoItems: state => state.post.posts[0].infoItems,
-    reviewItems: state => state.post.posts[0].reviewItems,
-    sellItems: state => state.post.posts[0].sellItems,
-    promoteItems: state => state.post.posts[0].promoteItems,
-    galleryItems: state => state.post.posts[0].galleryItems
+    infoItems: state => state.post.posts.infoItems,
+    reviewItems: state => state.post.posts.reviewItems,
+    sellItems: state => state.post.posts.sellItems,
+    promoteItems: state => state.post.posts.promoteItems,
+    galleryItems: state => state.post.posts.galleryItems
   }),
   data () {
     return {

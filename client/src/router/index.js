@@ -8,7 +8,7 @@ import Login from '@/components/login/LoginComponent'
 import MyPage from '@/components/mypage/MyPageComponent'
 import DashBoard from '@/components/board/BoardListComponent'
 import BoardList from '@/components/board/BoardListTempComponent'
-import BoardInfo from '@/components/board/BoardInfoTempComponent'
+import BoardView from '@/components/board/BoardViewComponent'
 
 Vue.use(Router)
 
@@ -33,8 +33,8 @@ export default new Router({
               component: BoardList
             },
             {
-              path: 'info/:id',
-              component: BoardInfo
+              path: 'info/:key/:id',
+              component: BoardView
             }
           ]
         },
