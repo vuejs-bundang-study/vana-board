@@ -15,7 +15,7 @@
           <v-flex xs6>
             <v-card class="section_list recommended text-sm-left">
               <h2 id = "title" class="section_title">
-                <span class="recommended_title">오늘의 추천글</span>
+                <a class="news_title black--text" title="자유게시판 바로가기">자유게시판 ></a>
               </h2>
               <div id = "list">
                 <v-list

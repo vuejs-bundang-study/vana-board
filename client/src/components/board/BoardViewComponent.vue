@@ -4,7 +4,7 @@
       <v-flex xs10>
         <v-toolbar class = "text-xs-center" dark color="#3F51B5">
           <v-toolbar-title>
-            모두의 공원
+            자유게시판
           </v-toolbar-title>
         </v-toolbar>
         <v-card class="section_title text-sm-left">
