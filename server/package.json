@@ -50,8 +50,7 @@
           "transform-async-to-generator",
           "transform-regenerator",
           "transform-class-properties",
-          "transform-object-rest-spread",
-          "transform-runtime"
+          "transform-object-rest-spread"
         ],
         "presets": [
           "env"
