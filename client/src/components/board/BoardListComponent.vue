@@ -119,9 +119,9 @@
                     v-for= "item in galleryItems"
                     :key= "item.id"
                     :item= "item"
-                    :src= "item.url">
+                    :src= "item.img">
                     <a class= "black--text">
-                      <img style = 'height:30%; width:30%;' :src= "item.url">
+                      <img style = 'height:30%; width:30%;' :src= "item.img">
                     </a>
                     <a class= "black--text">
                       {{item.subject}}
@@ -137,9 +137,9 @@
                     v-for= "item in galleryItems"
                     :key= "item.id"
                     :item= "item"
-                    :src= "item.url">
+                    :src= "item.img">
                     <a class= "black--text">
-                      <img style = 'height:30%; width:30%;' :src= "item.url">
+                      <img style = 'height:30%; width:30%;' :src= "item.img">
                     </a>
                     <a class= "black--text">
                       {{item.subject}}
@@ -161,8 +161,9 @@
 import { mapActions, mapState } from 'vuex'
 export default {
   methods: {
-    goPostInfo: function (id) {
-      this.$router.push({path: `/board/info/${id.subject}`})
+    goPostInfo: function (item) {
+      // this.$router.push({path: `/board/info/${id.subject}`})
+      this.$router.push({path: `/board/info/${item.key}/${item.id}`})
     },
     ...mapActions('post', ['getAllPosts'])
   },
