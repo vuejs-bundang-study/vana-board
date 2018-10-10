@@ -1,13 +1,17 @@
 import { Category } from '../models/category';
 
 export const getCategories = async () => {
-    return Category.find();
+    return Category.find().populate('createdBy', 'nickname');
 };
 
-export const createCategory = async (category) => {
-    return Category.create(category);
+export const createCategory = async ({ name, createdBy }) => {
+    return Category.create({ name, createdBy });
 };
 
-export const deleteCategoryById = async (id) => {
-    return Category.deleteOne({ _id: id});
+export const updateCategoryById = async (_id, { name }) => {
+    return Category.update({ _id }, { $set: { name }});
+};
+
+export const deleteCategoryById = async (_id) => {
+    return Category.deleteOne({ _id });
 };
