@@ -1,20 +1,23 @@
 import { Comment } from '../models/comment';
 
-export const getSample = async (id) => {
-    return Sample.findById(id);
+export const getAllComments = async () => {
+    return Comment.find({ isDeleted: false })
+      .populate('user', 'nickname')
 };
 
-export const createSample = async ({ title, content }) => {
+export const getCommentsOnPost = async (_id) => {
+    return Comment.find({ _id, isDeleted: false })
+      .populate('user', 'nickname')
+};
 
-    /*
-     * TODO validation
-     * if (타이틀이나 컨텐츠가 올바르지 않아) {
-     *     throw new Error('글쓰기 실패')
-     * }
-     */
+export const createComment = async ({ createdBy, content, parent, post }) => {
+    return Comment.create({ createdBy, content, parent, post})
+};
 
-    return Sample.create({
-        title,
-        content,
-    });
+export const updateComment = async (_id, { content }) => {
+    return Comment.update({ _id }, { $set: { content, updatedAt: Date() }})
+};
+
+export const deleteComment = async (_id) => {
+    return Comment.update({ _id }, { $set: { isDeleted: true }})
 };
