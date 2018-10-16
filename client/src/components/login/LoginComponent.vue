@@ -9,14 +9,14 @@
         <v-text-field
           v-model="id"
           :rules="nameRules"
-          label="Username or email address"
+          label="이메일"
           required
         ></v-text-field>
         <v-text-field
           type="password"
-          v-model="pwd"
+          v-model="password"
           :rules="emailRules"
-          label="Password"
+          label="비밀번호"
           required
         ></v-text-field>
         <v-btn
@@ -24,10 +24,12 @@
           @click="submit"
           color="primary"
         >
-          Sign in
+          로그인
         </v-btn>
       </v-form>
+      <a>회원가입</a>
 
+      <a>찾기</a>
     </div>
     <div class="login-footer">
       <div class="footer-sign-in">
@@ -35,8 +37,10 @@
       </div>
     </div>
   </div>
+
 </template>
 <script>
+import { mapActions, mapState } from 'vuex'
 /* login */
 export default {
   data () {
@@ -44,26 +48,21 @@ export default {
       valid: true,
       id: '',
       nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters'
+        v => !!v || '이메일을 입력하세요',
+        v => /.+@.+/.test(v) || '이메일 형식이 올바르지 않습니다'
       ],
-      pwd: '',
+      password: '',
       emailRules: [
-        v => !!v || 'E-mail is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters'
+        v => !!v || '비밀번호를 입력하세요'
       ]
     }
   },
   methods: {
-
     submit () {
-      var id = this.id
-      var pwd = this.pwd
-      console.log(id)
-      console.log(pwd)
-      console.log(this.$store.state.login.test)
-
-      this.$store.commit('login/TEST', id)
+      this.$store.dispatch('login/LOGIN', {
+        id: this.id,
+        password: this.password
+      })
     }
   }
 }
