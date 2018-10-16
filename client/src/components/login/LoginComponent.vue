@@ -58,47 +58,57 @@ export default {
     }
   },
   methods: {
+    ...mapActions('login', ['login']),
     submit () {
-      this.$store.dispatch('login/LOGIN', {
-        id: this.id,
-        password: this.password
-      })
+      try {
+        let loginResult = this.login({email: this.id, password: this.password})
+        console.log(loginResult) // 로그인 성공하면 true, 아니면 false
+        if (loginResult) {
+          this.$router.push('/')
+        } else {
+          alert(this.errorMessage)
+        }
+      } catch (err) {
+        console.error(err)
+      }
     }
-  }
+  },
+  computed: mapState({
+    errorMessage: state => state.login.errorMessage,
+    isAuth: state => state.login.isAuth
+  })
 }
 </script>
 <style>
-  #login {
-    display: block;
-    height:100%;
-    text-align: center;
-    padding : 100px 0px;
-    background-color:rgb(249, 249, 249);
-  }
-  .login-header > h1 {
-    font-size: 24px;
-    font-weight: 300; /* 폰트 굵기 */
-    letter-spacing: -0.5px; /* 글자사이 간격 */
-    padding: 20px;
-  }
-  .login-header > .header-logo {
-
-  }
-  .login-form {
-    display:inline-block;;
-    width: 308px;
-    height: 230px;
-    border: 1px solid #ababab;
-    background-color:white;
-  }
-  .login-footer {
-    padding:20px;
-  }
-  .footer-sign-in {
-    display:inline-block;
-    width: 308px;
-    padding:20px;
-    border: 0.5px solid #ababab;
-  }
-
+#login {
+  display: block;
+  height: 100%;
+  text-align: center;
+  padding: 100px 0px;
+  background-color: rgb(249, 249, 249);
+}
+.login-header > h1 {
+  font-size: 24px;
+  font-weight: 300; /* 폰트 굵기 */
+  letter-spacing: -0.5px; /* 글자사이 간격 */
+  padding: 20px;
+}
+.login-header > .header-logo {
+}
+.login-form {
+  display: inline-block;
+  width: 308px;
+  height: 230px;
+  border: 1px solid #ababab;
+  background-color: white;
+}
+.login-footer {
+  padding: 20px;
+}
+.footer-sign-in {
+  display: inline-block;
+  width: 308px;
+  padding: 20px;
+  border: 0.5px solid #ababab;
+}
 </style>

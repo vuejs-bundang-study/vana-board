@@ -7,17 +7,15 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import App from './App'
 import store from './store/index'
 import router from './router/index'
-import axios from 'axios'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
-Vue.prototype.$http = axios
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  store,
   router,
+  store,
   components: { App },
   render: h => h(App)
 })

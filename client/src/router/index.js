@@ -12,6 +12,12 @@ import BoardView from '@/components/board/BoardViewComponent'
 
 Vue.use(Router)
 
+const requireAuth = () => (from, to, next) => {
+  const isAuthenticated = false
+  if (isAuthenticated) return next()
+  next('/login?returnPath=me')
+}
+
 export default new Router({
   routes: [
     // main
@@ -35,19 +41,25 @@ export default new Router({
             {
               path: 'info/:key/:id',
               component: BoardView
+            },
+            {
+              path: 'add/:categoryId',
+              // component: Board,
+              beforeEnter: requireAuth
             }
           ]
         },
         {
           path: '/mypage',
-          component: MyPage
+          component: MyPage,
+          beforeEnter: requireAuth
         }
       ]
     },
     // login
     {
       path: '/login',
-      component: Login,
+      component: Login
       // ,
       // beforeEnter: function (to, from, next) {
       //   // 인증 값 검증 로직 추가

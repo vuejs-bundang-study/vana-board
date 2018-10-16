@@ -1,4 +1,5 @@
 import homeApi from '../../api/home'
+import * as types from '../mutation_type'
 
 // initial state
 const state = {
@@ -24,6 +25,9 @@ const actions = {
 
 // mutations
 const mutations = {
+  [types.UID] (state, uid) {
+    state.uid = uid
+  },
   setUser (state, user) {
     state.user = user
   }

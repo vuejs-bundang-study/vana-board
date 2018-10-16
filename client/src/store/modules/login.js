@@ -1,10 +1,5 @@
-import axios from 'axios'
-const instance = axios.create({
-  baseURL: 'http://49.247.204.250:3000',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
+import loginApi from '../../api/login'
+import { IS_AUTH, ERROR_MESSAGE } from '../mutation_type'
 
 // initial state
 const state = {
@@ -14,15 +9,21 @@ const state = {
 // getters
 const getters = {}
 
+let setIsAuth = ({ commit }, data) => commit(IS_AUTH, data)
+let setErrorMessage = ({ commit }, data) => commit(ERROR_MESSAGE, data)
+
 // actions
 const actions = {
-  LOGIN ({ commit }, data) {
-    return instance
-      .post(`/auth/login`, { email: data.id, password: data.password })
-      .then(({ data }) => commit('LOGIN', data))
-      .catch((error) => {
-        console.log(error)
-      })
+  login (store, { email, password }) {
+    let param = { email: email, password: password }
+    loginApi.doLogin(param).then(({ data }) => {
+      if (data.success) {
+        loginApi.setAccessToken(data.accessToken)
+      }
+      setIsAuth(store, data.success)
+      setErrorMessage(store, data.message)
+      return data.success
+    })
   },
   LOGOUT ({ commit }) {
     commit('LOGOUT')
@@ -31,15 +32,11 @@ const actions = {
 
 // mutations
 const mutations = {
-  LOGIN (state, { accessToken }) {
-    state.accessToken = accessToken
-    if (state.accessToken != null) {
-      alert('로그인성공')
-      this.$router.push({path: `/`})
-    }
+  [IS_AUTH] (state, isAuth) {
+    state.isAuth = isAuth
   },
-  LOGOUT (state) {
-    state.accessToken = null
+  [ERROR_MESSAGE] (state, errorMessage) {
+    state.errorMessage = errorMessage
   }
 }
 

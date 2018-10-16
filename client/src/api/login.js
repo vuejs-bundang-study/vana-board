@@ -1,11 +1,14 @@
-const _users = [
-  { email: 'admin', password: 'admin' },
-  { email: 'test1', password: 'test1' },
-  { email: 'test2', password: 'test2' }
-]
+import apiSvc from './APIService'
 
 export default {
-  login (cb) {
-    setTimeout(() => cb(_users), 100)
+  doLogin (param) {
+    return apiSvc.post(`/auth/login`, {
+      email: param.email,
+      password: param.password
+    })
+  },
+
+  setAccessToken (accessToken) {
+    apiSvc.defaults.headers.common['Authorization'] = accessToken
   }
 }

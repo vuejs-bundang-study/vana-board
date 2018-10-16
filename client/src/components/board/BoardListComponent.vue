@@ -162,7 +162,6 @@ import { mapActions, mapState } from 'vuex'
 export default {
   methods: {
     goPostInfo: function (item) {
-      // this.$router.push({path: `/board/info/${id.subject}`})
       this.$router.push({path: `/board/info/${item.key}/${item.id}`})
     },
     ...mapActions('post', ['getAllPosts'])

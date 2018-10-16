@@ -15,12 +15,12 @@ export default {
       this.$emit('changeDrawer')
     },
     goLogin: function () {
-      this.$router.replace('login');
-    },
+      this.$router.replace('login')
+    }
   },
-  data() {
+  data () {
     return {
-      isLogined: false,
+      isLogined: false
     }
   }
 }
