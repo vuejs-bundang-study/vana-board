@@ -14,16 +14,20 @@ let setErrorMessage = ({ commit }, data) => commit(ERROR_MESSAGE, data)
 
 // actions
 const actions = {
-  login (store, { email, password }) {
-    let param = { email: email, password: password }
-    loginApi.doLogin(param).then(({ data }) => {
+  async login (store, { email, password }) {
+    try {
+      let param = { email: email, password: password }
+      let response = await loginApi.doLogin(param)
+      let data = response.data
       if (data.success) {
         loginApi.setAccessToken(data.accessToken)
+        setIsAuth(store, data.success)
       }
-      setIsAuth(store, data.success)
-      setErrorMessage(store, data.message)
       return data.success
-    })
+    } catch (err) {
+      setErrorMessage(store, err.response.data.message)
+      return err.response.data.success
+    }
   },
   LOGOUT ({ commit }) {
     commit('LOGOUT')

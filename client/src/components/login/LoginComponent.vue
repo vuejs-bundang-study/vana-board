@@ -59,9 +59,9 @@ export default {
   },
   methods: {
     ...mapActions('login', ['login']),
-    submit () {
+    async submit () {
       try {
-        let loginResult = this.login({email: this.id, password: this.password})
+        let loginResult = await this.login({email: this.id, password: this.password})
         console.log(loginResult) // 로그인 성공하면 true, 아니면 false
         if (loginResult) {
           this.$router.push('/')
@@ -92,8 +92,6 @@ export default {
   font-weight: 300; /* 폰트 굵기 */
   letter-spacing: -0.5px; /* 글자사이 간격 */
   padding: 20px;
-}
-.login-header > .header-logo {
 }
 .login-form {
   display: inline-block;
